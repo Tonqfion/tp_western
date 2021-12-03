@@ -26,5 +26,6 @@ public class Bartender extends Paleface {
 
     public void serveDrinks(Human human) {
         speaks("Hey, " + human.getName() + "! Here is a glass of " + human.getFavoriteDrink() + " for you!");
+        human.drink();
     }
 }

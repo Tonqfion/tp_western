@@ -20,7 +20,6 @@ public class Main {
     }
 
 
-
     public static void chooseGeneralAction(Scanner scanner, ArrayList<Human> characters) {
         System.out.println("What would you like to do now?");
         System.out.println("1 - Make someone do something");

@@ -1,6 +1,6 @@
 package fr.exercice.western.characters;
 
-public class Paleface extends Human {
+public abstract class Paleface extends Human {
 
     private boolean isScalped;
     public Paleface(String name, String favoriteDrink) {

@@ -1,6 +1,6 @@
 package fr.exercice.western.characters;
 
-public class Human {
+public abstract class Human {
     private final String NAME;
     private final String FAVORITE_DRINK;
 
@@ -33,6 +33,4 @@ public class Human {
     public String getFavoriteDrink() {
         return this.FAVORITE_DRINK;
     }
-
-
 }

@@ -1,19 +1,22 @@
 package fr.exercice.western.characters;
 
+import java.util.ArrayList;
+
 public class Bandit extends Paleface implements Outlaw {
     private final String style;
-    private int damselsCaptured;
+    private final ArrayList<Damsel> capturedDamsels;
     private int reward;
     private boolean isImprisoned;
 
     public Bandit(String name) {
         super(name, "Schnapps");
         this.style = "Bad Boy";
-        this.damselsCaptured = 0;
         this.reward = 100;
         this.isImprisoned = false;
+        this.capturedDamsels = new ArrayList<>();
     }
 
+    @Override
     public String getName() {
         return super.getName() + " the " + this.style;
     }
@@ -23,25 +26,27 @@ public class Bandit extends Paleface implements Outlaw {
         super.speaks(text);
     }
 
+    public void introduction() {
+        super.introduction();
+        speaks("I look like a " + this.style + " and I've already kidnapped " + this.capturedDamsels.size() + " damsels.");
+        speaks("The reward for my head is " + this.getRewardString() +"!");
+    }
+
+    @Override
     public boolean getIsImprisoned() {
         return this.isImprisoned;
     }
 
+    @Override
     public void toggleIsImprisoned() {
         this.isImprisoned = !this.isImprisoned;
     }
+
 
     @Override
     public String getRewardString() {
         return this.getReward() + "$";
     }
-
-    public void introduction() {
-        super.introduction();
-        speaks("I look like a " + this.style + " and I've already kidnapped " + this.damselsCaptured + " damsels.");
-        speaks("The reward for my head is " + this.getRewardString() +"!");
-    }
-
 
     @Override
     public void kidnaps(Damsel damsel) {
@@ -49,9 +54,9 @@ public class Bandit extends Paleface implements Outlaw {
             this.speaks("I made a big mistake. " + damsel.getName() + " is already captive!");
             damsel.speaks("You idiot, I'm already captive.");
         } else {
-            this.damselsCaptured++;
+            this.capturedDamsels.add(damsel);
             this.reward += 100;
-            speaks("Ah! You are mine now, " + damsel.getName() + "! That's damsel number " + damselsCaptured + "!");
+            speaks("Ah! You are mine now, " + damsel.getName() + "! That's damsel number " + this.capturedDamsels.size() + "!");
             damsel.screams(this);
             damsel.toggleIsCaptive();
         }
@@ -63,12 +68,12 @@ public class Bandit extends Paleface implements Outlaw {
     }
 
     @Override
-    public void getsImprisoned(Cowboy cowboy) {
-        if (this.getIsImprisoned()) {
-            speaks("Oh no, you damned " + cowboy.getName() + "! You got me!");
-            toggleIsImprisoned();
-        } else {
-            speaks("Pretty sure I'm already in jail.");
-        }
+    public boolean hasCapturedDamsels() {
+        return this.capturedDamsels.size() != 0;
+    }
+
+    @Override
+    public ArrayList<Damsel> getCapturedDamsels() {
+        return this.capturedDamsels;
     }
 }

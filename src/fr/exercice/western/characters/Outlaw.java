@@ -1,12 +1,12 @@
 package fr.exercice.western.characters;
 
+import java.util.ArrayList;
+
 public interface Outlaw {
 
     void speaks(String text);
 
     boolean getIsImprisoned();
-
-    void getsImprisoned(Cowboy cowboy);
 
     void toggleIsImprisoned();
 
@@ -17,4 +17,8 @@ public interface Outlaw {
     String getRewardString();
 
     String getName();
+
+    boolean hasCapturedDamsels();
+
+    ArrayList<Damsel> getCapturedDamsels();
 }

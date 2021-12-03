@@ -1,5 +1,7 @@
 package fr.exercice.western.characters;
 
+import java.util.ArrayList;
+
 public class Cowboy extends Paleface {
 
     private int popularity;
@@ -36,9 +38,9 @@ public class Cowboy extends Paleface {
         speaks("Take that, rascal!");
     }
 
-    public void freesDamsel(Damsel damsel) {
+    private void freeUniqueDamsel(Damsel damsel) {
         if (damsel.getIsCaptive()) {
-            speaks("Hey, " + damsel.getName() + "! You look stunning in that" + damsel.getDressColor());
+            speaks("Hey, " + damsel.getName() + "! You look stunning in that " + damsel.getDressColor() + " dress!");
             damsel.speaks("Thank you so much!");
             damsel.toggleIsCaptive();
             this.popularity++;
@@ -48,12 +50,21 @@ public class Cowboy extends Paleface {
         }
     }
 
+    private void freeAllDamsels(ArrayList<Damsel> damsels) {
+        for (Damsel damsel : damsels) {
+            this.freeUniqueDamsel(damsel);
+        }
+    }
+
     public void imprisons(Outlaw outlaw) {
         if (!outlaw.getIsImprisoned()) {
             speaks("In the name of the law, " + outlaw.getName() + " you are under arrest.");
             outlaw.speaks("Oh no, you damned " + this.getName() + "! You got me!");
             outlaw.toggleIsImprisoned();
             this.outlawsCaptured++;
+            if (outlaw.hasCapturedDamsels()) {
+                this.freeAllDamsels(outlaw.getCapturedDamsels());
+            }
         } else {
             speaks("Damnit, " + outlaw.getName() + " is already in jail.");
             speaks("Pretty sure I'm already in jail.");

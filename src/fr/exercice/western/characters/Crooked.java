@@ -13,8 +13,6 @@ public class Crooked extends Cowboy implements Outlaw {
         this.isImprisoned = false;
     }
 
-
-
     @Override
     public void speaks(String text) {
         super.speaks(text);

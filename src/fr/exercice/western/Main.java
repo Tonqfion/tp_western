@@ -11,9 +11,11 @@ public class Main {
         Cowboy luke = new Cowboy("Luke");
         Cowboy clint = new Sheriff("Clint");
         Bartender pedro = new Bartender("Pedro");
+        Bartender rodrigo = new Bartender("Rodrigo", "Los Palacios");
         Crooked julian = new Crooked("Julian");
         OutlawDamsel mary = new OutlawDamsel("Mary", "Blue");
         Apache sittingBull = new Apache("Sitting Bull");
+        Crooked robert = new Crooked("Robert");
 
         jack.introduction();
         lucy.introduction();
@@ -28,5 +30,7 @@ public class Main {
         jack.kidnaps(lucy);
         luke.imprisons(mary);
         sittingBull.scalps(pedro);
+        robert.imprisons(julian);
+        rodrigo.introduction();
     }
 }

@@ -50,9 +50,9 @@ public class Cowboy extends Paleface {
 
     public void imprisons(Outlaw outlaw) {
         if (!outlaw.getIsImprisoned()) {
+            speaks("In the name of the law, " + outlaw.getName() + " you are under arrest.");
             outlaw.speaks("Oh no, you damned " + this.getName() + "! You got me!");
             outlaw.toggleIsImprisoned();
-            speaks("In the name of the law, " + outlaw.getName() + " you are under arrest.");
             this.outlawsCaptured++;
         } else {
             speaks("Damnit, " + outlaw.getName() + " is already in jail.");

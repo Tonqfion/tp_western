@@ -10,7 +10,7 @@ public abstract class Human {
     }
 
     protected void speaks(String text) {
-        System.out.println(this.NAME + " - " + text);
+        System.out.println("(" + this.NAME + ")" + " - " + text);
     }
 
     public void introduction() {

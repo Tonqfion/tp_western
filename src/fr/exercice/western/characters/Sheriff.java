@@ -13,7 +13,7 @@ public class Sheriff extends Cowboy {
 
     public void introduction() {
         super.introduction();
-        speaks("I have put " + this.banditsCaptured + " bandit(s) in jail.");
+        speaks("I have put " + this.outlawsCaptured + " bandit(s) in jail.");
     }
 
     public void wanted(Outlaw outlaw) {

@@ -12,16 +12,7 @@ public abstract class Paleface extends Human {
         return this.isScalped;
     }
 
-    private void setIsScalpedToTrue() {
+    protected void setIsScalpedToTrue() {
         this.isScalped = true;
-    }
-
-    public void getsScalped(Apache apache) {
-        if (!this.isScalped)  {
-            speaks("Aouch, my head! That was not very nice, " + apache.getName() + "!");
-            setIsScalpedToTrue();
-        } else {
-            speaks("Man, I have no scalp anymore... You're goign to scoop out my brain " + apache.getName() + "?");
-        }
     }
 }

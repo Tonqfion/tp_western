@@ -4,13 +4,13 @@ public class Cowboy extends Paleface {
 
     private int popularity;
     protected String qualifier;
-    protected int banditsCaptured;
+    protected int outlawsCaptured;
 
     public Cowboy(String name) {
         super(name, "Whiskey");
         this.popularity = 0;
         this.qualifier = "Valiant";
-        this.banditsCaptured = 0;
+        this.outlawsCaptured = 0;
     }
 
 
@@ -39,20 +39,24 @@ public class Cowboy extends Paleface {
     public void freesDamsel(Damsel damsel) {
         if (damsel.getIsCaptive()) {
             speaks("Hey, " + damsel.getName() + "! You look stunning in that" + damsel.getDressColor());
-            damsel.getsFreed();
+            damsel.speaks("Thank you so much!");
+            damsel.toggleIsCaptive();
             this.popularity++;
         } else {
             speaks("I made a big mistake. " + damsel.getName() + " is not captive!");
+            damsel.speaks("You moron, I'm not captive ... yet!");
         }
     }
 
-    public void imprisons(Bandit bandit) {
-        if (bandit.getIsImprisoned()) {
-            speaks("In the name of the law, " + bandit.getName() + " you are under arrest.");
-            this.banditsCaptured++;
+    public void imprisons(Outlaw outlaw) {
+        if (!outlaw.getIsImprisoned()) {
+            outlaw.speaks("Oh no, you damned " + this.getName() + "! You got me!");
+            outlaw.toggleIsImprisoned();
+            speaks("In the name of the law, " + outlaw.getName() + " you are under arrest.");
+            this.outlawsCaptured++;
         } else {
-            speaks("Damnit, " + bandit.getName() + " is already in jail.");
+            speaks("Damnit, " + outlaw.getName() + " is already in jail.");
+            speaks("Pretty sure I'm already in jail.");
         }
-        bandit.getsImprisoned(this);
     }
 }

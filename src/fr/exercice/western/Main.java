@@ -13,6 +13,7 @@ public class Main {
         Bartender pedro = new Bartender("Pedro");
         Crooked julian = new Crooked("Julian");
         OutlawDamsel mary = new OutlawDamsel("Mary", "Blue");
+        Apache sittingBull = new Apache("Sitting Bull");
 
         jack.introduction();
         lucy.introduction();
@@ -25,5 +26,7 @@ public class Main {
         mary.introduction();
         mary.kidnaps(lucy);
         jack.kidnaps(lucy);
+        luke.imprisons(mary);
+        sittingBull.scalps(pedro);
     }
 }

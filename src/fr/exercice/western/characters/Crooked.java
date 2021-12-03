@@ -13,6 +13,13 @@ public class Crooked extends Cowboy implements Outlaw {
         this.isImprisoned = false;
     }
 
+
+
+    @Override
+    public void speaks(String text) {
+        super.speaks(text);
+    }
+
     @Override
     public boolean getIsImprisoned() {
         return this.isImprisoned;
@@ -32,11 +39,13 @@ public class Crooked extends Cowboy implements Outlaw {
     public void kidnaps(Damsel damsel) {
         if (damsel.getIsCaptive()) {
             this.speaks("I made a big mistake. " + damsel.getName() + " is already captive!");
+            damsel.speaks("You idiot, I'm already captive.");
         } else {
             this.damselsCaptured++;
             this.reward += 100;
             speaks("Ah! You are mine now, " + damsel.getName() + "! That's damsel number " + damselsCaptured + "!");
-            damsel.getsKidnapped(this);
+            damsel.screams(this);
+            damsel.toggleIsCaptive();
         }
     }
 

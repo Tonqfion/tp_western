@@ -1,8 +1,8 @@
 package fr.exercice.western.characters;
 
-public class Bartender extends Human {
+public class Bartender extends Paleface {
 
-    private String barName;
+    private final String barName;
 
     public Bartender(String name) {
         super(name, "Wine");

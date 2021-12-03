@@ -23,10 +23,12 @@ public class Apache extends Human{
     public void scalps(Paleface paleface) {
         if (!paleface.getIsScalped()) {
             speaks("Ah! " + this.getName() + " has your scalp now, " + paleface.getName() + "!");
+            paleface.speaks("Aouch, my head! That was not very nice, " + this.getName() + "!");
+            paleface.setIsScalpedToTrue();
             this.feathers++;
         } else {
             speaks("What is this treachery, you have no scalp?");
+            paleface.speaks("Man, I have no scalp anymore... You're goign to scoop out my brain " + this.getName() + "?");
         }
-        paleface.getsScalped(this);
     }
 }

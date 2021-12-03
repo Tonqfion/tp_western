@@ -37,29 +37,11 @@ public class Damsel extends Paleface {
         return this.isCaptive;
     }
 
-    private void toggleIsCaptive() {
+    protected void toggleIsCaptive() {
         this.isCaptive = !this.isCaptive;
     }
 
-    private void screams(Outlaw outlaw) {
+    protected void screams(Outlaw outlaw) {
         this.speaks("Oh my god! I'm being kidnapped by " + outlaw.getName() + "!");
-    }
-
-    public void getsKidnapped(Outlaw outlaw) {
-        if (!this.isCaptive) {
-            this.screams(outlaw);
-            this.toggleIsCaptive();
-        } else {
-            speaks("You idiot, I'm already captive.");
-        }
-    }
-
-    public void getsFreed() {
-        if (this.isCaptive) {
-            this.speaks("Thank you so much!");
-            this.toggleIsCaptive();
-        } else {
-            speaks("You moron, I'm not captive ... yet!");
-        }
     }
 }

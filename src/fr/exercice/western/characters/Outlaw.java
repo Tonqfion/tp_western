@@ -2,6 +2,8 @@ package fr.exercice.western.characters;
 
 public interface Outlaw {
 
+    void speaks(String text);
+
     boolean getIsImprisoned();
 
     void getsImprisoned(Cowboy cowboy);

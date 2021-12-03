@@ -18,6 +18,11 @@ public class Bandit extends Paleface implements Outlaw {
         return super.getName() + " the " + this.style;
     }
 
+    @Override
+    public void speaks(String text) {
+        super.speaks(text);
+    }
+
     public boolean getIsImprisoned() {
         return this.isImprisoned;
     }
@@ -38,15 +43,18 @@ public class Bandit extends Paleface implements Outlaw {
     }
 
 
+    @Override
     public void kidnaps(Damsel damsel) {
         if (damsel.getIsCaptive()) {
             this.speaks("I made a big mistake. " + damsel.getName() + " is already captive!");
+            damsel.speaks("You idiot, I'm already captive.");
         } else {
             this.damselsCaptured++;
             this.reward += 100;
             speaks("Ah! You are mine now, " + damsel.getName() + "! That's damsel number " + damselsCaptured + "!");
+            damsel.screams(this);
+            damsel.toggleIsCaptive();
         }
-        damsel.getsKidnapped(this);
     }
 
     @Override

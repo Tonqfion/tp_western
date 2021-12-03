@@ -20,8 +20,13 @@ public class Apache extends Human{
         speaks("I have " + this.feathers + " feathers because I scalped some Palefaces!");
     }
 
-    public void scalp(Paleface paleface) {
-
+    public void scalps(Paleface paleface) {
+        if (!paleface.getIsScalped()) {
+            speaks("Ah! " + this.getName() + " has your scalp now, " + paleface.getName() + "!");
+            this.feathers++;
+        } else {
+            speaks("What is this treachery, you have no scalp?");
+        }
+        paleface.getsScalped(this);
     }
-
 }

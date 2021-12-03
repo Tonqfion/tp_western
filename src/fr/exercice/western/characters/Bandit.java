@@ -1,6 +1,6 @@
 package fr.exercice.western.characters;
 
-public class Bandit extends Human implements Outlaw, Paleface {
+public class Bandit extends Paleface implements Outlaw {
     private final String style;
     private int damselsCaptured;
     private int reward;
@@ -45,8 +45,8 @@ public class Bandit extends Human implements Outlaw, Paleface {
             this.damselsCaptured++;
             this.reward += 100;
             speaks("Ah! You are mine now, " + damsel.getName() + "! That's damsel number " + damselsCaptured + "!");
-            damsel.getsKidnapped(this);
         }
+        damsel.getsKidnapped(this);
     }
 
     @Override
@@ -63,10 +63,4 @@ public class Bandit extends Human implements Outlaw, Paleface {
             speaks("Pretty sure I'm already in jail.");
         }
     }
-
-    @Override
-    public void getsScalped(Apache apache) {
-        speaks("Aouch! My beautiful lady head. " + apache.getName() + " you're not a nice guy!");
-    }
-
 }

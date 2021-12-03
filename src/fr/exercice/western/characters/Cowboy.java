@@ -1,6 +1,6 @@
 package fr.exercice.western.characters;
 
-public class Cowboy extends Human implements Paleface {
+public class Cowboy extends Paleface {
 
     private int popularity;
     protected String qualifier;
@@ -49,16 +49,10 @@ public class Cowboy extends Human implements Paleface {
     public void imprisons(Bandit bandit) {
         if (bandit.getIsImprisoned()) {
             speaks("In the name of the law, " + bandit.getName() + " you are under arrest.");
-            bandit.getsImprisoned(this);
             this.banditsCaptured++;
         } else {
             speaks("Damnit, " + bandit.getName() + " is already in jail.");
         }
+        bandit.getsImprisoned(this);
     }
-
-    @Override
-    public void getsScalped(Apache apache) {
-        speaks(apache.getName() + " you dog! My hair were all I had!");
-    }
-
 }

@@ -1,6 +1,6 @@
 package fr.exercice.western.characters;
 
-public class Damsel extends Human implements Paleface {
+public class Damsel extends Paleface {
 
     private String dressColor;
     private boolean isCaptive;
@@ -61,10 +61,5 @@ public class Damsel extends Human implements Paleface {
         } else {
             speaks("You moron, I'm not captive ... yet!");
         }
-    }
-
-    @Override
-    public void getsScalped(Apache apache) {
-        speaks("Ye filibutering " + apache.getName() + "! I'll get you soon enough");
     }
 }
